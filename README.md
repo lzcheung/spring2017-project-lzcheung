@@ -1,1 +1,1 @@
-# sprint2017-project-lzcheung
+# spring2017-project-lzcheung
