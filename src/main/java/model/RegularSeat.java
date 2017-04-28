@@ -1,13 +1,44 @@
 package main.java.model;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class RegularSeat implements Seat {
-  private String name;
+  private String id;
+  private Date startBound;
+  private Date endBound;
   private ArrayList<Student> students;
 
-  public RegularSeat(String name) {
-    this.name = name;
+  /**
+   * @param id Seat number.
+   */
+  public RegularSeat(String id) {
+    this.id = id;
     students = new ArrayList<Student>();
+    
+    try {
+      this.startBound = timeFormatter.parse(Seat.DEFAULT_START_BOUND);
+      this.endBound = timeFormatter.parse(Seat.DEFAULT_END_BOUND);
+    } catch (ParseException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }
+  
+  /**
+   * @param id Seat number.
+   */
+  public RegularSeat(String id, String startBound, String endBound) {
+    this.id = id;
+    students = new ArrayList<Student>();
+    
+    try {
+      this.startBound = timeFormatter.parse(startBound);
+      this.endBound = timeFormatter.parse(endBound);
+    } catch (ParseException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 }
