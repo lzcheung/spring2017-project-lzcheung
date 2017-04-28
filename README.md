@@ -1,3 +1,3 @@
-[![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
+[![Build Status](https://travis-ci.org/cpe305Spring17/spring2017-project-lzcheung.svg?branch=master)](https://travis-ci.org/cpe305Spring17/spring2017-project-lzcheung)
 
 # spring2017-project-lzcheung
