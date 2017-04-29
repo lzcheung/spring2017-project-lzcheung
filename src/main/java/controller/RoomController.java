@@ -1,5 +1,12 @@
 package main.java.controller;
 
-public class RoomController {
+import main.java.model.Room;
 
+public class RoomController {
+  private Room room;
+  
+  public RoomController(Room room) {
+    this.room = room;
+  }
+  
 }
