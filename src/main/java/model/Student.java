@@ -14,7 +14,7 @@ public class Student {
   public Student(String name, String username) {
     this.name = name;
     this.username = username;
-    exams = new HashMap<Integer, Exam>();
+    exams = new HashMap<>();
   }
 
   public String getName() {

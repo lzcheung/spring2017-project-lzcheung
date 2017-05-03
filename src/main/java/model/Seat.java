@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class Seat {
-  public static DateFormat timeFormatter = new SimpleDateFormat("HH:mm a");
+  public static final DateFormat timeFormatter = new SimpleDateFormat("HH:mm a");
   public static final String DEFAULT_START_BOUND = "08:00 am";
   public static final String DEFAULT_END_BOUND = "10:00 pm";
   
@@ -21,7 +21,7 @@ public abstract class Seat {
    */
   public Seat(String id) {
     this.id = id;
-    exams = new ArrayList<Exam>();
+    exams = new ArrayList<>();
     
     try {
       this.startBound = timeFormatter.parse(Seat.DEFAULT_START_BOUND);
@@ -39,7 +39,7 @@ public abstract class Seat {
    */
   public Seat(String id, String startBound, String endBound) {
     this.id = id;
-    exams = new ArrayList<Exam>();
+    exams = new ArrayList<>();
     
     try {
       this.startBound = timeFormatter.parse(startBound);

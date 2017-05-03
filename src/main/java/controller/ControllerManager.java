@@ -7,7 +7,7 @@ public class ControllerManager {
   private ArrayList<Room> listOfRooms;
   
   public ControllerManager() {
-    this.listOfRooms = new ArrayList<Room>();
+    this.listOfRooms = new ArrayList<>();
   }
   
   public void addRoom() {
