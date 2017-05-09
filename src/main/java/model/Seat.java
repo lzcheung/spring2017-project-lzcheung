@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Logger;
 
 public abstract class Seat {
   public static final DateFormat timeFormatter = new SimpleDateFormat("HH:mm a");
@@ -27,8 +28,8 @@ public abstract class Seat {
       this.startBound = timeFormatter.parse(Seat.DEFAULT_START_BOUND);
       this.endBound = timeFormatter.parse(Seat.DEFAULT_END_BOUND);
     } catch (ParseException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      Logger l = Logger.getAnonymousLogger();
+      l.log(null, "Invalid Format", e);
     }
   }
   
@@ -45,7 +46,8 @@ public abstract class Seat {
       this.startBound = timeFormatter.parse(startBound);
       this.endBound = timeFormatter.parse(endBound);
     } catch (ParseException e) {
-      e.printStackTrace();
+      Logger l = Logger.getAnonymousLogger();
+      l.log(null, "Invalid Format", e);
     }
   }
 
@@ -68,7 +70,8 @@ public abstract class Seat {
     try {
       this.startBound = timeFormatter.parse(startTime);
     } catch (ParseException e) {
-      e.printStackTrace();
+      Logger l = Logger.getAnonymousLogger();
+      l.log(null, "Invalid Format", e);
     }
   }
 
@@ -83,7 +86,8 @@ public abstract class Seat {
     try {
       this.endBound = timeFormatter.parse(endTime);
     } catch (ParseException e) {
-      e.printStackTrace();
+      Logger l = Logger.getAnonymousLogger();
+      l.log(null, "Invalid Format", e);
     }
   }
   
@@ -93,5 +97,9 @@ public abstract class Seat {
   
   public Exam getExamByReqId(int reqId) {
     return null;
+  }
+  
+  public int getNumExams() {
+    return exams.size();
   }
 }

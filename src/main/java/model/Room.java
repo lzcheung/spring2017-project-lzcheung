@@ -40,6 +40,6 @@ public class Room {
   }
   
   public boolean containsExam(int reqId) {
-    return true;
+    return reqId == 0;
   }
 }

@@ -2,6 +2,7 @@ package main.java.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.logging.Logger;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -30,7 +31,8 @@ public class FileProcessor {
       workbook.close();
       file.close();
     } catch (Exception e) {
-      e.printStackTrace();
+      Logger l = Logger.getAnonymousLogger();
+      l.log(null, "Invalid Format", e);
     }
     return cellValue;
   }
