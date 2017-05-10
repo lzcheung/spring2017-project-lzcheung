@@ -32,13 +32,17 @@ public class FileProcessor {
       
       workbook.close();
       
-      if (file != null) {
-        file.close();
-      }
-      
     } catch (Exception e) {
       Logger l = Logger.getAnonymousLogger();
       l.log(null, "Invalid Format", e);
+    }
+    try {
+      if (file != null) {
+        file.close();
+      }
+    } catch (Exception e){
+      Logger l = Logger.getAnonymousLogger();
+      l.log(null, "Exception: Filestream failed to close", e);
     }
     return cellValue;
   }

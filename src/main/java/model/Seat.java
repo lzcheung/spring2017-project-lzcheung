@@ -28,8 +28,7 @@ public abstract class Seat {
       this.startBound = timeFormatter.parse(Seat.DEFAULT_START_BOUND);
       this.endBound = timeFormatter.parse(Seat.DEFAULT_END_BOUND);
     } catch (ParseException e) {
-      Logger l = Logger.getAnonymousLogger();
-      l.log(null, "Invalid Format", e);
+      parseError(e);
     }
   }
   
@@ -46,8 +45,7 @@ public abstract class Seat {
       this.startBound = timeFormatter.parse(startBound);
       this.endBound = timeFormatter.parse(endBound);
     } catch (ParseException e) {
-      Logger l = Logger.getAnonymousLogger();
-      l.log(null, "Invalid Format", e);
+      parseError(e);
     }
   }
 
@@ -70,8 +68,7 @@ public abstract class Seat {
     try {
       this.startBound = timeFormatter.parse(startTime);
     } catch (ParseException e) {
-      Logger l = Logger.getAnonymousLogger();
-      l.log(null, "Invalid Format", e);
+      parseError(e);
     }
   }
 
@@ -86,8 +83,7 @@ public abstract class Seat {
     try {
       this.endBound = timeFormatter.parse(endTime);
     } catch (ParseException e) {
-      Logger l = Logger.getAnonymousLogger();
-      l.log(null, "Invalid Format", e);
+      parseError(e);
     }
   }
   
@@ -101,5 +97,10 @@ public abstract class Seat {
   
   public int getNumExams() {
     return exams.size();
+  }
+  
+  private void parseError(Exception e) {
+    Logger l = Logger.getAnonymousLogger();
+    l.log(null, "Invalid Format", e);
   }
 }
