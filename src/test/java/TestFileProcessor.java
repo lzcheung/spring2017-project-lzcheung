@@ -11,7 +11,7 @@ public class TestFileProcessor {
   public void test() {
     FileProcessor fp = new FileProcessor();
     assertEquals("a", fp.readFile(
-        "/Users/lzcheung/Documents/CPE305/Project_workspace/SeatGenProject/resources/test.xlsx"));
+        "src/test/resources/test.xlsx"));
   }
 
 }
