@@ -2,8 +2,6 @@ package test.java;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Date;
-
 import main.java.controller.StateSingleton;
 import main.java.model.Exam;
 import main.java.model.Student;
