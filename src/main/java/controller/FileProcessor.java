@@ -2,7 +2,6 @@ package main.java.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.logging.Logger;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -35,14 +34,15 @@ public class FileProcessor {
     } catch (Exception e) {
       Logger l = Logger.getAnonymousLogger();
       l.log(null, "Invalid Format", e);
-    }
-    try {
-      if (file != null) {
-        file.close();
+    } finally {
+      try {
+        if (file != null) {
+          file.close();
+        }
+      } catch (Exception e) {
+        Logger l = Logger.getAnonymousLogger();
+        l.log(null, "Exception: Filestream failed to close", e);
       }
-    } catch (Exception e){
-      Logger l = Logger.getAnonymousLogger();
-      l.log(null, "Exception: Filestream failed to close", e);
     }
     return cellValue;
   }
