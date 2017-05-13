@@ -45,4 +45,7 @@ public class Student {
     return exams.get(requestId);
   }
   
+  public String toString() {
+    return String.format("%-30s%-30s", "name: " + name, "Username: " + username);
+  }
 }

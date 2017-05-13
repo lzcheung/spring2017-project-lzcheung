@@ -42,4 +42,32 @@ public class Room {
   public boolean containsExam(int reqId) {
     return reqId == 0;
   }
+  
+  public int isValidExam(Exam exam) {
+    for (int i = 0; i < seats.length; i++) {
+      if (seats[i] == null) {
+        return i;
+      } else if (seats[i].checkExam(exam)) {
+        return i;
+      }
+    }
+    return -1;
+  }
+  
+  public void addExamToSeat(Exam exam, int seatNumber) {
+    if (seats[seatNumber] == null) {
+      seats[seatNumber] = new Seat(Integer.toString(seatNumber));
+      seats[seatNumber].addExam(exam);
+    } else {
+      seats[seatNumber].addExam(exam);
+    }
+  }
+  
+  public void printRoom() {
+    for (int i = 0; i < seats.length; i++) {
+      if (seats[i] != null) {
+        seats[i].printSeat(roomNumber);
+      }
+    }
+  }
 }

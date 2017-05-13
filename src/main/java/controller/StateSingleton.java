@@ -34,4 +34,18 @@ public class StateSingleton {
   public int getNumOfExams() {
     return exams.size();
   }
+  
+  public void printExams() {
+    for (Exam exam: exams) {
+      System.out.println(exam.toString());
+    }
+  }
+
+  public ArrayList<Student> getStudents() {
+    return students;
+  }
+
+  public ArrayList<Exam> getExams() {
+    return exams;
+  }
 }

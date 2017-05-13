@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Logger;
 
-public abstract class Seat {
-  public static final DateFormat timeFormatter = new SimpleDateFormat("HH:mm a");
+public class Seat {
+  public static final DateFormat TIME_FORMAT = new SimpleDateFormat("HH:mm a");
   public static final String DEFAULT_START_BOUND = "08:00 am";
   public static final String DEFAULT_END_BOUND = "10:00 pm";
   
@@ -25,8 +25,8 @@ public abstract class Seat {
     exams = new ArrayList<>();
     
     try {
-      this.startBound = timeFormatter.parse(Seat.DEFAULT_START_BOUND);
-      this.endBound = timeFormatter.parse(Seat.DEFAULT_END_BOUND);
+      this.startBound = TIME_FORMAT.parse(Seat.DEFAULT_START_BOUND);
+      this.endBound = TIME_FORMAT.parse(Seat.DEFAULT_END_BOUND);
     } catch (ParseException e) {
       parseError(e);
     }
@@ -42,8 +42,8 @@ public abstract class Seat {
     exams = new ArrayList<>();
     
     try {
-      this.startBound = timeFormatter.parse(startBound);
-      this.endBound = timeFormatter.parse(endBound);
+      this.startBound = TIME_FORMAT.parse(startBound);
+      this.endBound = TIME_FORMAT.parse(endBound);
     } catch (ParseException e) {
       parseError(e);
     }
@@ -66,7 +66,7 @@ public abstract class Seat {
    */
   public void setStartBound(String startTime) {
     try {
-      this.startBound = timeFormatter.parse(startTime);
+      this.startBound = TIME_FORMAT.parse(startTime);
     } catch (ParseException e) {
       parseError(e);
     }
@@ -81,7 +81,7 @@ public abstract class Seat {
    */
   public void setEndBound(String endTime) {
     try {
-      this.endBound = timeFormatter.parse(endTime);
+      this.endBound = TIME_FORMAT.parse(endTime);
     } catch (ParseException e) {
       parseError(e);
     }
@@ -102,5 +102,26 @@ public abstract class Seat {
   private void parseError(Exception e) {
     Logger l = Logger.getAnonymousLogger();
     l.log(null, "Invalid Format", e);
+  }
+  
+  public boolean checkExam(Exam exam) {
+    if (exams.isEmpty()) {
+      return true;
+    }
+    
+    Exam lastExam = exams.get(exams.size() - 1);
+
+    return lastExam.compare(exam);
+  }
+  
+  public void addExam(Exam exam) {
+    exams.add(exam);
+  }
+  
+  public void printSeat(String rmNumber) {
+    for (Exam exam: exams) {
+      String formated = String.format("Seat: %s-%-5s %s", rmNumber, id, exam.toString());
+      System.out.println(formated);
+    }
   }
 }

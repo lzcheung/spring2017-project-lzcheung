@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class Exam {
   private int requestId;
-  private String examRecieved;
+  private String examReceived;
   private String professor;
   private String requestStatus;
   private String accomodations;
@@ -20,7 +20,7 @@ public class Exam {
   
   /**
    * @param requestId Exam request id.
-   * @param examRecieved Exam method of retrieval.
+   * @param examReceived Exam method of retrieval.
    * @param professor Professor name.
    * @param requestStatus Exam request status.
    * @param accomodations Accommodations.
@@ -32,7 +32,7 @@ public class Exam {
               String requestStatus, String accomodations, String course, 
               Date startTime, Date endTime, Student student) {
     this.requestId = requestId;
-    this.examRecieved = examRecieved;
+    this.examReceived = examRecieved;
     this.professor = professor;
     this.requestStatus = requestStatus;
     this.accomodations = accomodations;
@@ -51,11 +51,11 @@ public class Exam {
   }
 
   public String getExamRecieved() {
-    return examRecieved;
+    return examReceived;
   }
 
   public void setExamRecieved(String examRecieved) {
-    this.examRecieved = examRecieved;
+    this.examReceived = examRecieved;
   }
 
   public String getProfessor() {
@@ -114,4 +114,22 @@ public class Exam {
     this.student = student;
   }
   
+  public String toString() {
+    String exam = String.format("%-60s%-40s%-30s%-30s%-30s", 
+        student.toString(), 
+        "Professor: " + professor, 
+        "Course: " + course, 
+        "Start time: " + Seat.TIME_FORMAT.format(startTime), 
+        "End time: " + Seat.TIME_FORMAT.format(endTime)
+        );
+    return exam;
+  }
+  
+  public boolean compare(Exam exam) {
+    if (this.endTime.before(exam.startTime) || this.endTime.equals(exam.startTime)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
