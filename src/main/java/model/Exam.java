@@ -14,6 +14,7 @@ public class Exam {
   private String requestStatus;
   private String accomodations;
   private String course;
+  private String seat;
   private Date startTime;
   private Date endTime;
   private Student student;
@@ -40,6 +41,7 @@ public class Exam {
     this.startTime = startTime;
     this.endTime = endTime;
     this.student = student;
+    this.seat = "Not seated";
   }
 
   public int getRequestId() {
@@ -114,6 +116,22 @@ public class Exam {
     this.student = student;
   }
   
+  public String getExamReceived() {
+    return examReceived;
+  }
+
+  public void setExamReceived(String examReceived) {
+    this.examReceived = examReceived;
+  }
+
+  public String getSeat() {
+    return seat;
+  }
+
+  public void setSeat(String seat) {
+    this.seat = seat;
+  }
+
   public String toString() {
     String exam = String.format("%-60s%-40s%-30s%-30s%-30s", 
         student.toString(), 
@@ -126,10 +144,10 @@ public class Exam {
   }
   
   public boolean compare(Exam exam) {
-    if (this.endTime.before(exam.startTime) || this.endTime.equals(exam.startTime)) {
-      return true;
-    } else {
+    if (this.endTime.after(exam.startTime)) {
       return false;
+    } else {
+      return true;
     }
   }
 }

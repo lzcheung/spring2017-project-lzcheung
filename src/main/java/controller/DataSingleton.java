@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import main.java.model.Exam;
 import main.java.model.Student;
 
-public class StateSingleton {
-  private static final StateSingleton INSTANCE = new StateSingleton();
+public class DataSingleton {
+  private static final DataSingleton INSTANCE = new DataSingleton();
   private ArrayList<Student> students;
   private ArrayList<Exam> exams;
   
-  public StateSingleton() {
+  public DataSingleton() {
     this.students = new ArrayList<>();
     this.exams = new ArrayList<>();
   }
   
-  public static StateSingleton getInstance() {
+  public static DataSingleton getInstance() {
     return INSTANCE;
   }
   

@@ -2,12 +2,18 @@ package main.java.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Logger;
 
 import main.java.model.Exam;
+import main.java.model.Seat;
 import main.java.model.Student;
 
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -25,7 +31,7 @@ public class FileProcessor {
   public static final int INSTRUCTOR_NAME = 15;
   public static final int REQUEST_STATUS = 21;
   
-  public void readFile(String fileName, StateSingleton state) {
+  public void readFile(String fileName, DataSingleton state) {
     FileInputStream file = null;
     try {
       file = new FileInputStream(new File(fileName));
@@ -84,5 +90,52 @@ public class FileProcessor {
     String username = row.getCell(STUDENT_USERNAME).getStringCellValue();
     
     return new Student(name, username);
+  }
+  
+  public void writeToExcelFile(String outputFileName, ArrayList<Exam> exams) {
+    Workbook wb = new XSSFWorkbook();
+    Sheet sheet = wb.createSheet("Sheet 1");
+    Row header = sheet.createRow(0);
+    
+    header.createCell(0).setCellValue("EXAM RECEIVED");
+    header.createCell(1).setCellValue("PROFESSOR");
+    header.createCell(2).setCellValue("REQUEST STATUS");
+    header.createCell(3).setCellValue("ACCOMMODATIONS");
+    header.createCell(4).setCellValue("REQ #");
+    header.createCell(5).setCellValue("LOCATION/SEAT");
+    header.createCell(6).setCellValue("STUDENT");
+    header.createCell(7).setCellValue("CLASS");
+    header.createCell(8).setCellValue("START TIME");
+    header.createCell(9).setCellValue("END TIME");
+    header.createCell(10).setCellValue("INSTRUCTOR");
+    header.createCell(11).setCellValue("STUDENT USERNAME");
+    
+    for (int i = 0; i < exams.size(); i++) {
+      Exam exam = exams.get(i);
+      Row row = sheet.createRow(i + 1);
+      
+      row.createCell(0).setCellValue(exam.getExamRecieved());
+      row.createCell(1).setCellValue(exam.getProfessor());
+      row.createCell(2).setCellValue(exam.getRequestStatus());
+      row.createCell(3).setCellValue(exam.getAccomodations());
+      row.createCell(4).setCellValue(exam.getRequestId());
+      row.createCell(5).setCellValue(exam.getSeat());
+      row.createCell(6).setCellValue(exam.getStudent().getName());
+      row.createCell(7).setCellValue(exam.getCourse());
+      row.createCell(8).setCellValue(Seat.TIME_FORMAT.format(exam.getStartTime()));
+      row.createCell(9).setCellValue(Seat.TIME_FORMAT.format(exam.getEndTime()));
+      row.createCell(10).setCellValue(exam.getProfessor());
+      row.createCell(11).setCellValue(exam.getStudent().getUsername());
+    }
+    
+    FileOutputStream fileOut;
+    try {
+      fileOut = new FileOutputStream(outputFileName);
+      wb.write(fileOut);
+      wb.close();
+      fileOut.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }

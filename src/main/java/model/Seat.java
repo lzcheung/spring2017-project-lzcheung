@@ -118,9 +118,9 @@ public class Seat {
     exams.add(exam);
   }
   
-  public void printSeat(String rmNumber) {
+  public void printSeat() {
     for (Exam exam: exams) {
-      String formated = String.format("Seat: %s-%-5s %s", rmNumber, id, exam.toString());
+      String formated = String.format("Seat: %-10s %s", id, exam.toString());
       System.out.println(formated);
     }
   }

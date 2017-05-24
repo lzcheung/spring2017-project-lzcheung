@@ -55,9 +55,12 @@ public class Room {
   }
   
   public void addExamToSeat(Exam exam, int seatNumber) {
+    String assigned = roomNumber + "-" + Integer.toString(seatNumber);
+    exam.setSeat(assigned);
     if (seats[seatNumber] == null) {
-      seats[seatNumber] = new Seat(Integer.toString(seatNumber));
+      seats[seatNumber] = new Seat(assigned);
       seats[seatNumber].addExam(exam);
+      
     } else {
       seats[seatNumber].addExam(exam);
     }
@@ -66,7 +69,7 @@ public class Room {
   public void printRoom() {
     for (int i = 0; i < seats.length; i++) {
       if (seats[i] != null) {
-        seats[i].printSeat(roomNumber);
+        seats[i].printSeat();
       }
     }
   }
