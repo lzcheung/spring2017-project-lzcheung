@@ -45,9 +45,7 @@ public class Room {
   
   public int isValidExam(Exam exam) {
     for (int i = 0; i < seats.length; i++) {
-      if (seats[i] == null) {
-        return i;
-      } else if (seats[i].checkExam(exam)) {
+      if (seats[i] == null || seats[i].checkExam(exam)) {
         return i;
       }
     }

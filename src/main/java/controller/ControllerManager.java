@@ -1,6 +1,7 @@
 package main.java.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import main.java.model.Exam;
 import main.java.model.Room;
@@ -18,7 +19,7 @@ public class ControllerManager {
     rooms.add(new Room(roomNumber, capacity));
   }
   
-  public void seatExams(ArrayList<Exam> exams) {
+  public void seatExams(List<Exam> exams) {
     int seatNumber = -1;
     
     for (Exam exam: exams) {

@@ -93,43 +93,43 @@ public class FileProcessor {
   }
   
   public void writeToExcelFile(String outputFileName, List<Exam> exams) {
-    Workbook wb = new XSSFWorkbook();
-    Sheet sheet = wb.createSheet("Sheet 1");
-    Row header = sheet.createRow(0);
-    
-    header.createCell(0).setCellValue("EXAM RECEIVED");
-    header.createCell(1).setCellValue("PROFESSOR");
-    header.createCell(2).setCellValue("REQUEST STATUS");
-    header.createCell(3).setCellValue("ACCOMMODATIONS");
-    header.createCell(4).setCellValue("REQ #");
-    header.createCell(5).setCellValue("LOCATION/SEAT");
-    header.createCell(6).setCellValue("STUDENT");
-    header.createCell(7).setCellValue("CLASS");
-    header.createCell(8).setCellValue("START TIME");
-    header.createCell(9).setCellValue("END TIME");
-    header.createCell(10).setCellValue("INSTRUCTOR");
-    header.createCell(11).setCellValue("STUDENT USERNAME");
-    
-    for (int i = 0; i < exams.size(); i++) {
-      Exam exam = exams.get(i);
-      Row row = sheet.createRow(i + 1);
-      
-      row.createCell(0).setCellValue(exam.getExamRecieved());
-      row.createCell(1).setCellValue(exam.getProfessor());
-      row.createCell(2).setCellValue(exam.getRequestStatus());
-      row.createCell(3).setCellValue(exam.getAccomodations());
-      row.createCell(4).setCellValue(exam.getRequestId());
-      row.createCell(5).setCellValue(exam.getSeat());
-      row.createCell(6).setCellValue(exam.getStudent().getName());
-      row.createCell(7).setCellValue(exam.getCourse());
-      row.createCell(8).setCellValue(Seat.TIME_FORMAT.format(exam.getStartTime()));
-      row.createCell(9).setCellValue(Seat.TIME_FORMAT.format(exam.getEndTime()));
-      row.createCell(10).setCellValue(exam.getProfessor());
-      row.createCell(11).setCellValue(exam.getStudent().getUsername());
-    }
-    
     FileOutputStream fileOut = null;
     try {
+      Workbook wb = new XSSFWorkbook();
+      Sheet sheet = wb.createSheet("Sheet 1");
+      Row header = sheet.createRow(0);
+      
+      header.createCell(0).setCellValue("EXAM RECEIVED");
+      header.createCell(1).setCellValue("PROFESSOR");
+      header.createCell(2).setCellValue("REQUEST STATUS");
+      header.createCell(3).setCellValue("ACCOMMODATIONS");
+      header.createCell(4).setCellValue("REQ #");
+      header.createCell(5).setCellValue("LOCATION/SEAT");
+      header.createCell(6).setCellValue("STUDENT");
+      header.createCell(7).setCellValue("CLASS");
+      header.createCell(8).setCellValue("START TIME");
+      header.createCell(9).setCellValue("END TIME");
+      header.createCell(10).setCellValue("INSTRUCTOR");
+      header.createCell(11).setCellValue("STUDENT USERNAME");
+      
+      for (int i = 0; i < exams.size(); i++) {
+        Exam exam = exams.get(i);
+        Row row = sheet.createRow(i + 1);
+        
+        row.createCell(0).setCellValue(exam.getExamRecieved());
+        row.createCell(1).setCellValue(exam.getProfessor());
+        row.createCell(2).setCellValue(exam.getRequestStatus());
+        row.createCell(3).setCellValue(exam.getAccomodations());
+        row.createCell(4).setCellValue(exam.getRequestId());
+        row.createCell(5).setCellValue(exam.getSeat());
+        row.createCell(6).setCellValue(exam.getStudent().getName());
+        row.createCell(7).setCellValue(exam.getCourse());
+        row.createCell(8).setCellValue(Seat.TIME_FORMAT.format(exam.getStartTime()));
+        row.createCell(9).setCellValue(Seat.TIME_FORMAT.format(exam.getEndTime()));
+        row.createCell(10).setCellValue(exam.getProfessor());
+        row.createCell(11).setCellValue(exam.getStudent().getUsername());
+      }
+    
       fileOut = new FileOutputStream(outputFileName);
       wb.write(fileOut);
       wb.close();
