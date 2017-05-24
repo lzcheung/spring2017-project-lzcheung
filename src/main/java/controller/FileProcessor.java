@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Logger;
 
 import main.java.model.Exam;
@@ -56,9 +57,8 @@ public class FileProcessor {
       workbook.close();
       
     } catch (Exception e) {
-      e.printStackTrace();
-      //Logger l = Logger.getAnonymousLogger();
-      //l.log(null, "Invalid Format", e);
+      Logger l = Logger.getAnonymousLogger();
+      l.log(null, "Invalid Format", e);
     } finally {
       try {
         if (file != null) {
@@ -92,7 +92,7 @@ public class FileProcessor {
     return new Student(name, username);
   }
   
-  public void writeToExcelFile(String outputFileName, ArrayList<Exam> exams) {
+  public void writeToExcelFile(String outputFileName, List<Exam> exams) {
     Workbook wb = new XSSFWorkbook();
     Sheet sheet = wb.createSheet("Sheet 1");
     Row header = sheet.createRow(0);
@@ -128,14 +128,23 @@ public class FileProcessor {
       row.createCell(11).setCellValue(exam.getStudent().getUsername());
     }
     
-    FileOutputStream fileOut;
+    FileOutputStream fileOut = null;
     try {
       fileOut = new FileOutputStream(outputFileName);
       wb.write(fileOut);
       wb.close();
-      fileOut.close();
     } catch (Exception e) {
-      e.printStackTrace();
+      Logger l = Logger.getAnonymousLogger();
+      l.log(null, "Invalid Format", e);
+    } finally {
+      try {
+        if (fileOut != null) {
+          fileOut.close();
+        }
+      } catch (Exception e) {
+        Logger l = Logger.getAnonymousLogger();
+        l.log(null, "Exception: Filestream failed to close", e);
+      }
     }
   }
 }
