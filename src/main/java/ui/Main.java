@@ -1,11 +1,6 @@
 package main.java.ui;
 
-import java.awt.Desktop;
 import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,7 +18,6 @@ import main.java.controller.DataSingleton;
 import main.java.controller.FileProcessor;
 
 public class Main extends Application {
-  private Desktop desktop = Desktop.getDesktop();
   
   public static void main(String[] args) {
     Application.launch(args);
@@ -88,14 +82,4 @@ public class Main extends Application {
     stage.show();
   }
   
-  private void openFile(File file) {
-    try {
-      desktop.open(file);
-    } catch (IOException ex) {
-      Logger.getLogger(
-            FileChooser.class.getName()).log(
-                Level.SEVERE, null, ex
-      );
-    }
-  }
 }
