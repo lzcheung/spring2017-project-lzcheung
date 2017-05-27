@@ -116,7 +116,7 @@ public class FileProcessor {
       row.createCell(0).setCellValue(exam.getExamRecieved());
       row.createCell(1).setCellValue(exam.getProfessor());
       row.createCell(2).setCellValue(exam.getRequestStatus());
-      row.createCell(3).setCellValue(exam.getAccomodations());
+      row.createCell(3).setCellValue(exam.getAccommodations());
       row.createCell(4).setCellValue(exam.getRequestId());
       row.createCell(5).setCellValue(exam.getSeat());
       row.createCell(6).setCellValue(exam.getStudent().getName());

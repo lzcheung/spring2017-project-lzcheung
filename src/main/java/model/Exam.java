@@ -12,12 +12,16 @@ public class Exam {
   private String examReceived;
   private String professor;
   private String requestStatus;
-  private String accomodations;
+  private String accommodations;
   private String course;
   private String seat;
   private Date startTime;
   private Date endTime;
   private Student student;
+  
+  
+  public Exam() {
+  }
   
   /**
    * @param requestId Exam request id.
@@ -36,7 +40,7 @@ public class Exam {
     this.examReceived = examRecieved;
     this.professor = professor;
     this.requestStatus = requestStatus;
-    this.accomodations = accomodations;
+    this.accommodations = accomodations;
     this.course = course;
     this.startTime = startTime;
     this.endTime = endTime;
@@ -76,12 +80,12 @@ public class Exam {
     this.requestStatus = requestStatus;
   }
 
-  public String getAccomodations() {
-    return accomodations;
+  public String getAccommodations() {
+    return accommodations;
   }
 
-  public void setAccomodations(String accomodations) {
-    this.accomodations = accomodations;
+  public void setAccommodations(String accomodations) {
+    this.accommodations = accomodations;
   }
 
   public String getCourse() {
