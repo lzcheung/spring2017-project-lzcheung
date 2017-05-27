@@ -155,4 +155,12 @@ public class FileProcessor {
       }
     }
   }
+  
+  public String generateOutPath(String parent, String name) {
+    int idx = name.lastIndexOf('.');
+    String oldName = name.substring(0, idx);
+    String ext = name.substring(idx);
+    String outPath = String.format("%s/%s_result%s", parent, oldName, ext);
+    return outPath;
+  }
 }
