@@ -178,6 +178,7 @@ public class Exam {
   }
   
   public boolean compare(Exam exam) {
+    System.out.println("hi");
     if (this.endTime.after(exam.startTime)) {
       return false;
     } else {

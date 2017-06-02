@@ -25,8 +25,8 @@ public class Seat {
     exams = new ArrayList<>();
     
     try {
-      this.startBound = TIME_FORMAT.parse(Seat.DEFAULT_START_BOUND);
-      this.endBound = TIME_FORMAT.parse(Seat.DEFAULT_END_BOUND);
+      this.startBound = TIME_FORMAT.parse(DEFAULT_START_BOUND);
+      this.endBound = TIME_FORMAT.parse(DEFAULT_END_BOUND);
     } catch (ParseException e) {
       parseError(e);
     }
