@@ -9,6 +9,7 @@
     + [View](#view)
     + [Controller](#controller)
   * [Class Diagram](#class-diagram)
+  * [Demo](#demo)
 
 ## Introduction
 
