@@ -13,14 +13,14 @@ Model-View-Controller
 
 ### Model
 
--Student
--Exam
--Seat
--Room
+- Student
+- Exam
+- Seat
+- Room
 
 ### View
 The GUI.
 
 ### Controller
--Room Controller
--File input/output
+- Room Controller
+- File input/output
