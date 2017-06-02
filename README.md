@@ -45,6 +45,6 @@ Model-View-Controller
 
 ## Demo
 
-<img src='http://i.imgur.com/uPvoSjI.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/vlR0NBd.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
