@@ -48,3 +48,9 @@ Model-View-Controller
 <img src='http://i.imgur.com/vlR0NBd.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+### Excel Sheet Before
+![Alt text](Content/excel_before.png?raw=true "Class Diagram")
+
+### Excel Sheet After
+![Alt text](Content/excel_after.png?raw=true "Class Diagram")
