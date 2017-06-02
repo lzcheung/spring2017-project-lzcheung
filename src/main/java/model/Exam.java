@@ -18,6 +18,9 @@ public class Exam {
   private Date startTime;
   private Date endTime;
   private Student student;
+  private String studentName;
+  private String studentUsername;
+  private String allows;
   
   
   public Exam() {
@@ -35,7 +38,7 @@ public class Exam {
    */
   public Exam(int requestId, String examRecieved, String professor, 
               String requestStatus, String accomodations, String course, 
-              Date startTime, Date endTime, Student student) {
+              Date startTime, Date endTime, Student student, String allows) {
     this.requestId = requestId;
     this.examReceived = examRecieved;
     this.professor = professor;
@@ -45,7 +48,10 @@ public class Exam {
     this.startTime = startTime;
     this.endTime = endTime;
     this.student = student;
+    this.studentName = student.getName();
+    this.studentUsername = student.getUsername();
     this.seat = "Not seated";
+    this.allows = allows;
   }
 
   public int getRequestId() {
@@ -120,6 +126,22 @@ public class Exam {
     this.student = student;
   }
   
+  public String getStudentName() {
+    return studentName;
+  }
+
+  public void setStudentName(String studentName) {
+    this.studentName = studentName;
+  }
+
+  public String getStudentUsername() {
+    return studentUsername;
+  }
+
+  public void setStudentUsername(String studentUsername) {
+    this.studentUsername = studentUsername;
+  }
+
   public String getExamReceived() {
     return examReceived;
   }
@@ -134,6 +156,14 @@ public class Exam {
 
   public void setSeat(String seat) {
     this.seat = seat;
+  }
+
+  public String getAllows() {
+    return allows;
+  }
+
+  public void setAllows(String allows) {
+    this.allows = allows;
   }
 
   public String toString() {

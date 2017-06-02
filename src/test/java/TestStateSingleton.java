@@ -32,8 +32,8 @@ public class TestStateSingleton {
   @Test
   public void testExams1() {
     DataSingleton state = DataSingleton.getInstance();
-    state.addExam(new Exam(0, "examRecieved", "professor", "requestStatus",
-        "accomodations", "course", null, null, null));
+    state.addExam(new Exam(0, "examRecieved", "professor", "requestStatus","accomodations", 
+        "course", null, null, new Student("name", "user"), "accommodations"));
     assertEquals(1, state.getNumOfExams());
   }
 

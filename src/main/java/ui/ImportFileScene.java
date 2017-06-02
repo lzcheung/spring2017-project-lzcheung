@@ -11,13 +11,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import main.java.controller.ControllerManager;
+import main.java.controller.RoomController;
 import main.java.controller.DataSingleton;
 import main.java.controller.FileProcessor;
 
 public class ImportFileScene extends Scene {
   
-  public static class ModifiedVBox extends VBox {
+  private static class ModifiedVBox extends VBox {
     public ModifiedVBox(final Stage stage) {
       super(12);
       final FileChooser fileChooser = new FileChooser();
@@ -35,7 +35,7 @@ public class ImportFileScene extends Scene {
                   
                   FileProcessor fp = new FileProcessor();
                   DataSingleton state = DataSingleton.getInstance();
-                  ControllerManager controller = new ControllerManager();
+                  RoomController controller = new RoomController();
                   
                   fp.readFile(path, state);
                   
@@ -48,6 +48,8 @@ public class ImportFileScene extends Scene {
                   controller.seatExams(state.getExams());
                   
                   controller.printAllRooms();
+                  
+                  stage.setScene(new TableScene(stage));
                 }
               }
           });

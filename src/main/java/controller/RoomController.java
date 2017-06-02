@@ -6,11 +6,11 @@ import java.util.List;
 import main.java.model.Exam;
 import main.java.model.Room;
 
-public class ControllerManager {
+public class RoomController {
   private ArrayList<Room> rooms;
   private ArrayList<Exam> extras;
   
-  public ControllerManager() {
+  public RoomController() {
     this.rooms = new ArrayList<>();
     this.extras = new ArrayList<>();
   }

@@ -77,11 +77,12 @@ public class FileProcessor {
     String requestStatus = row.getCell(REQUEST_STATUS).getStringCellValue();
     String accomodations = row.getCell(ACCOMODATIONS).getStringCellValue();
     String course = row.getCell(COURSE).getStringCellValue();
+    String allows = row.getCell(INSTRUCTOR_ALLOWS).getStringCellValue();
     Date startTime = row.getCell(START_TIME).getDateCellValue();
     Date endTime = row.getCell(END_TIME).getDateCellValue();
     
     return new Exam(requestId, examReceived, professor, requestStatus, 
-        accomodations, course, startTime, endTime, student);
+        accomodations, course, startTime, endTime, student, allows);
   }
 
   private Student rowToStudent(XSSFRow row) {

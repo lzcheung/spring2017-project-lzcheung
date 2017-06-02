@@ -1,6 +1,7 @@
 package main.java.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import main.java.model.Exam;
 import main.java.model.Student;
@@ -41,11 +42,11 @@ public class DataSingleton {
     }
   }
 
-  public ArrayList<Student> getStudents() {
+  public List<Student> getStudents() {
     return students;
   }
 
-  public ArrayList<Exam> getExams() {
+  public List<Exam> getExams() {
     return exams;
   }
 }

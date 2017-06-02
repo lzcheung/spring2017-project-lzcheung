@@ -33,7 +33,8 @@ public class TestCompareExams {
                           "course", 
                           exam1Start,
                           exam1End,
-                          null);
+                          null,
+                          "accomodations");
     Exam exam2 = new Exam(1, 
                           "examRecieved", 
                           "professora", 
@@ -42,7 +43,8 @@ public class TestCompareExams {
                           "course", 
                           exam2Start,
                           exam2End,
-                          null);
+                          null,
+                          "accommodations");
     assertTrue(exam1.compare(exam2));
   }
   
@@ -68,7 +70,8 @@ public class TestCompareExams {
                           "course", 
                           exam1Start,
                           exam1End,
-                          null);
+                          null,
+                          "accommodations");
     Exam exam2 = new Exam(1, 
                           "examRecieved", 
                           "professora", 
@@ -77,7 +80,8 @@ public class TestCompareExams {
                           "course", 
                           exam2Start,
                           exam2End,
-                          null);
+                          null,
+                          "accommodations");
     assertTrue(exam1.compare(exam2));
   }
   
@@ -103,7 +107,8 @@ public class TestCompareExams {
                           "course", 
                           exam1Start,
                           exam1End,
-                          null);
+                          null,
+                          "accommodations");
     Exam exam2 = new Exam(1, 
                           "examRecieved", 
                           "professora", 
@@ -112,7 +117,8 @@ public class TestCompareExams {
                           "course", 
                           exam2Start,
                           exam2End,
-                          null);
+                          null,
+                          "accommodations");
     assertFalse(exam1.compare(exam2));
   }
 
