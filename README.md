@@ -45,4 +45,4 @@ Model-View-Controller
 
 ## Demo
 
-#<img src='http://i.imgur.com/uPvoSjI.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/uPvoSjI.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
