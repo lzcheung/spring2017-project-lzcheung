@@ -42,3 +42,7 @@ Model-View-Controller
 
 ## Class Diagram
 ![Alt text](Content/SeatGenClassDiagram.png?raw=true "Class Diagram")
+
+## Demo
+
+#<img src='http://imgur.com/a/XRv67' title='Video Walkthrough' width='' alt='Video Walkthrough' />
