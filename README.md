@@ -41,3 +41,4 @@ Model-View-Controller
 - File input/output
 
 ## Class Diagram
+![Alt text](Content/SeatGenClassDiagram.png?raw=true "Class Diagram")
