@@ -8,6 +8,7 @@
     + [Model](#model)
     + [View](#view)
     + [Controller](#controller)
+  * [Class Diagram](#class-diagram)
 
 ## Introduction
 
@@ -38,3 +39,5 @@ Model-View-Controller
 ### Controller
 - Room Controller
 - File input/output
+
+## Class Diagram
