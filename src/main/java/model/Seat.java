@@ -48,7 +48,7 @@ public class Seat {
       parseError(e);
     }
   }
-
+ 
   public String getId() {
     return id;
   }
