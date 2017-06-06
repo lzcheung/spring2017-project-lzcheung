@@ -11,9 +11,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import main.java.controller.RoomController;
 import main.java.controller.DataSingleton;
 import main.java.controller.FileProcessor;
+import main.java.controller.RoomController;
 
 public class ImportFileScene extends Scene {
   
@@ -49,6 +49,10 @@ public class ImportFileScene extends Scene {
                   
                   controller.printAllRooms();
                   
+                  /*
+                  String outPath = fp.generateOutPath(file.getParent(), file.getName());
+                  fp.writeToExcelFile(outPath, state.getExams());
+                  */
                   stage.setScene(new TableScene(stage));
                 }
               }

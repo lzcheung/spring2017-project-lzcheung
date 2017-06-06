@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import main.java.model.Exam;
-import main.java.model.Seat;
 import main.java.model.Student;
 
 import org.apache.poi.ss.usermodel.Row;
@@ -114,7 +113,7 @@ public class FileProcessor {
       Exam exam = exams.get(i);
       Row row = sheet.createRow(i + 1);
       
-      row.createCell(0).setCellValue(exam.getExamRecieved());
+      row.createCell(0).setCellValue(exam.getExamReceived());
       row.createCell(1).setCellValue(exam.getProfessor());
       row.createCell(2).setCellValue(exam.getRequestStatus());
       row.createCell(3).setCellValue(exam.getAccommodations());
@@ -122,8 +121,8 @@ public class FileProcessor {
       row.createCell(5).setCellValue(exam.getSeat());
       row.createCell(6).setCellValue(exam.getStudent().getName());
       row.createCell(7).setCellValue(exam.getCourse());
-      row.createCell(8).setCellValue(Seat.TIME_FORMAT.format(exam.getStartTime()));
-      row.createCell(9).setCellValue(Seat.TIME_FORMAT.format(exam.getEndTime()));
+      row.createCell(8).setCellValue(Exam.TIME_FORMAT.format(exam.getStartTime()));
+      row.createCell(9).setCellValue(Exam.TIME_FORMAT.format(exam.getEndTime()));
       row.createCell(10).setCellValue(exam.getProfessor());
       row.createCell(11).setCellValue(exam.getStudent().getUsername());
     }

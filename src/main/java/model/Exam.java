@@ -1,5 +1,7 @@
 package main.java.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -8,6 +10,8 @@ import java.util.Date;
  *
  */
 public class Exam {
+  public static final DateFormat TIME_FORMAT = new SimpleDateFormat("HH:mm a");
+  
   private int requestId;
   private String examReceived;
   private String professor;
@@ -60,14 +64,6 @@ public class Exam {
 
   public void setRequestId(int requestId) {
     this.requestId = requestId;
-  }
-
-  public String getExamRecieved() {
-    return examReceived;
-  }
-
-  public void setExamRecieved(String examRecieved) {
-    this.examReceived = examRecieved;
   }
 
   public String getProfessor() {
@@ -171,8 +167,8 @@ public class Exam {
         student.toString(), 
         "Professor: " + professor, 
         "Course: " + course, 
-        "Start time: " + Seat.TIME_FORMAT.format(startTime), 
-        "End time: " + Seat.TIME_FORMAT.format(endTime)
+        "Start time: " + TIME_FORMAT.format(startTime), 
+        "End time: " + TIME_FORMAT.format(endTime)
         );
     return exam;
   }

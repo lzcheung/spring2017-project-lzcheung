@@ -11,7 +11,7 @@ public class DataSingleton {
   private ArrayList<Student> students;
   private ArrayList<Exam> exams;
   
-  public DataSingleton() {
+  private DataSingleton() {
     this.students = new ArrayList<>();
     this.exams = new ArrayList<>();
   }

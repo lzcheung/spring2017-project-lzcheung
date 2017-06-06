@@ -5,8 +5,11 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,6 +19,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import main.java.controller.DataSingleton;
 import main.java.model.Exam;
+
+import org.controlsfx.control.table.TableFilter;
 
 public class TableScene extends Scene {
   private static class TableSceneVBox extends VBox {
@@ -29,47 +34,12 @@ public class TableScene extends Scene {
     }
     
     private void initVBox() {
-      final Label label = new Label("Exams");
-      label.setFont(new Font("Arial", 20));
+      final Label title = new Label("Exams");
+      title.setFont(new Font("Arial", 20));
+      
+      final Label instruction = new Label("Right click column name to filter table.");
 
       table.setEditable(true);
-      /*
-      TableColumn<Exam, String> examReceivedCol = new TableColumn<>("EXAM RECEIVED");
-      examReceivedCol.setCellValueFactory(new PropertyValueFactory<Exam, String>("examReceived"));
-      TableColumn<Exam, String> professorCol = new TableColumn<>("PROFESSOR");
-      professorCol.setCellValueFactory(new PropertyValueFactory<Exam, String>("professor"));
-      TableColumn<Exam, String> reqStatusCol = new TableColumn<>("REQUEST STATUS");
-      reqStatusCol.setCellValueFactory(new PropertyValueFactory<Exam, String>("requestStatus"));
-      TableColumn<Exam, String> accomCol = new TableColumn<>("ACCOMMADATIONS");
-      accomCol.setCellValueFactory(new PropertyValueFactory<Exam, String>("accommodations"));
-      TableColumn<Exam, Integer> reqIdCol = new TableColumn<>("REQ #");
-      reqIdCol.setCellValueFactory(new PropertyValueFactory<Exam, Integer>("requestId"));
-      TableColumn<Exam, String> seatCol = new TableColumn<>("LOCATION/SEAT");
-      seatCol.setCellValueFactory(new PropertyValueFactory<Exam, String>("seat"));
-      TableColumn<Exam, String> studentNameCol = new TableColumn<>("STUDENT");
-      studentNameCol.setCellValueFactory(new PropertyValueFactory<Exam, String>("studentName"));
-      TableColumn<Exam, Date> startTimeCol = new TableColumn<>("START TIME");
-      startTimeCol.setCellValueFactory(new PropertyValueFactory<Exam, Date>("startTime"));
-      TableColumn<Exam, Date> endTimeCol = new TableColumn<>("END TIME");
-      endTimeCol.setCellValueFactory(new PropertyValueFactory<Exam, Date>("endTime"));
-      TableColumn<Exam, String> allowsCol = new TableColumn<>("INSTRUCTOR ALLOWS");
-      allowsCol.setCellValueFactory(new PropertyValueFactory<Exam, String>("allows"));
-      TableColumn<Exam, String> usernameCol = new TableColumn<>("STUDENT USERNAME");
-      usernameCol.setCellValueFactory(new PropertyValueFactory<Exam, String>("studentUsername"));
-      
-      table.setItems(getExams());
-      table.getColumns().addAll(examReceivedCol, 
-                                professorCol, 
-                                reqStatusCol,
-                                accomCol,
-                                reqIdCol,
-                                seatCol,
-                                studentNameCol,
-                                startTimeCol,
-                                endTimeCol,
-                                allowsCol,
-                                usernameCol);
-                                */
 
       TableColumn<Exam, Integer> reqIdCol = new TableColumn<>("REQ #");
       reqIdCol.setCellValueFactory(new PropertyValueFactory<Exam, Integer>("requestId"));
@@ -91,10 +61,25 @@ public class TableScene extends Scene {
                                 startTimeCol,
                                 seatCol,
                                 endTimeCol);
+      
+      TableFilter tableFilter = new TableFilter(table);
+      
+      Button detailsButton = new Button("Details");
+      detailsButton.setOnAction(
+          new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent e) {
+              Exam exam = table.getSelectionModel().getSelectedItem();
+              Stage details = new Stage();
+              details.setScene(new ExamDetailsScene(details, exam));
+              details.setTitle("Exam Details");
+              details.showAndWait();
+            }
+        });
 
-      this.setSpacing(5);
+      this.setSpacing(8);
       this.setPadding(new Insets(10, 0, 0, 10));
-      this.getChildren().addAll(label, table);
+      this.getChildren().addAll(title, instruction, table, detailsButton);
     }
     
     private ObservableList<Exam> getExams() {
@@ -109,9 +94,7 @@ public class TableScene extends Scene {
   }
 
   public TableScene(Stage stage) {
-    super(new TableSceneVBox());
-    stage.setWidth(880);
-    stage.setHeight(500);
+    super(new TableSceneVBox(), 880, 600);
   }
 
 }

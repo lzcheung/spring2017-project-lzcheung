@@ -1,14 +1,11 @@
 package main.java.model;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Logger;
 
 public class Seat {
-  public static final DateFormat TIME_FORMAT = new SimpleDateFormat("HH:mm a");
   public static final String DEFAULT_START_BOUND = "08:00 am";
   public static final String DEFAULT_END_BOUND = "10:00 pm";
   
@@ -25,8 +22,8 @@ public class Seat {
     exams = new ArrayList<>();
     
     try {
-      this.startBound = TIME_FORMAT.parse(DEFAULT_START_BOUND);
-      this.endBound = TIME_FORMAT.parse(DEFAULT_END_BOUND);
+      this.startBound = Exam.TIME_FORMAT.parse(DEFAULT_START_BOUND);
+      this.endBound = Exam.TIME_FORMAT.parse(DEFAULT_END_BOUND);
     } catch (ParseException e) {
       parseError(e);
     }
@@ -42,8 +39,8 @@ public class Seat {
     exams = new ArrayList<>();
     
     try {
-      this.startBound = TIME_FORMAT.parse(startBound);
-      this.endBound = TIME_FORMAT.parse(endBound);
+      this.startBound = Exam.TIME_FORMAT.parse(startBound);
+      this.endBound = Exam.TIME_FORMAT.parse(endBound);
     } catch (ParseException e) {
       parseError(e);
     }
@@ -61,30 +58,32 @@ public class Seat {
     return startBound;
   }
 
-  /**
-   * @param startTime Start bound.
-   */
+  public void setStartBound(Date startBound) {
+    this.startBound = startBound;
+  }
+  
   public void setStartBound(String startTime) {
     try {
-      this.startBound = TIME_FORMAT.parse(startTime);
+      this.startBound = Exam.TIME_FORMAT.parse(startTime);
     } catch (ParseException e) {
       parseError(e);
     }
   }
-
-  public Date getEndBound() {
-    return endBound;
+  
+  public void setEndBound(Date endBound) {
+    this.endBound = endBound;
   }
-
-  /**
-   * @param endTime End bound.
-   */
+  
   public void setEndBound(String endTime) {
     try {
-      this.endBound = TIME_FORMAT.parse(endTime);
+      this.endBound = Exam.TIME_FORMAT.parse(endTime);
     } catch (ParseException e) {
       parseError(e);
     }
+  }
+  
+  public Date getEndBound() {
+    return endBound;
   }
   
   public boolean containsExam(int reqId) {
@@ -99,6 +98,22 @@ public class Seat {
     return exams.size();
   }
   
+  public ArrayList<Exam> getExams() {
+    return exams;
+  }
+
+  public void setExams(ArrayList<Exam> exams) {
+    this.exams = exams;
+  }
+
+  public static String getDefaultStartBound() {
+    return DEFAULT_START_BOUND;
+  }
+
+  public static String getDefaultEndBound() {
+    return DEFAULT_END_BOUND;
+  }
+
   private void parseError(Exception e) {
     Logger l = Logger.getAnonymousLogger();
     l.log(null, "Invalid Format", e);
