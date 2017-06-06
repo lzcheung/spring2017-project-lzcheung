@@ -35,12 +35,6 @@ public class DataSingleton {
   public int getNumOfExams() {
     return exams.size();
   }
-  
-  public void printExams() {
-    for (Exam exam: exams) {
-      System.out.println(exam.toString());
-    }
-  }
 
   public List<Student> getStudents() {
     return students;

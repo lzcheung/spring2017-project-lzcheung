@@ -35,14 +35,5 @@ public class RoomController {
       }
     }
   }
-  
-  public void printAllRooms() {
-    for (Room rm: rooms) {
-      rm.printRoom();
-    }
-    System.out.println("Extra Exams: " + Integer.valueOf(extras.size()));
-    for (Exam exam: extras) {
-      System.out.println(exam.toString());
-    }
-  }
+
 }
