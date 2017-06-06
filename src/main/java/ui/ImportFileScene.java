@@ -47,7 +47,7 @@ public class ImportFileScene extends Scene {
                   
                   controller.seatExams(state.getExams());
                   
-                  controller.printAllRooms();
+                  // controller.printAllRooms();
                   
                   /*
                   String outPath = fp.generateOutPath(file.getParent(), file.getName());
