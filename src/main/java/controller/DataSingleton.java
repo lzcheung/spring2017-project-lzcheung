@@ -33,7 +33,7 @@ public class DataSingleton {
   }
   
   public int getNumOfExams() {
-    return exams.size();
+    return exams.size(); 
   }
 
   public List<Student> getStudents() {
