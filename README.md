@@ -46,9 +46,10 @@ Model-View-Controller
 
 ## Demo
 
-<img src='http://i.imgur.com/vlR0NBd.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+### Adding Rooms and Selecting Excel File
+<img src='http://i.imgur.com/tcXs6eA.gif' title='Scene 1' width='' alt='Scene 1' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
 ### Excel Sheet Before
 ![Alt text](Content/excel_before.png?raw=true "Class Diagram")
