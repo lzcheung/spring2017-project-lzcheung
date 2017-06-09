@@ -12,10 +12,9 @@ The purpose of this program is to automatically generate a seating chart for a t
     + [Model](#model)
     + [View](#view)
     + [Controller](#controller)
-  * [Class Diagram](#class-diagram)
   * [Demo](#demo)
-
-
+  * [What I Liked Best](#what-i-liked-best)
+  * [What I Learned](#what-i-learned)
 
 ## Application Usage
   1. Input the room information and click the import button to choose the excel file you wish process.
@@ -33,16 +32,30 @@ Model-View-Controller
 - Exam
 - Seat
 - Room
+
 ![Alt text](Content/Model.png?raw=true "Class Diagram")
 
 ### View
 - The GUI.
-![Alt text](Content/UI.png?raw=true "Class Diagram")
+
+![Alt text](Content/View.png?raw=true "Class Diagram")
 
 ### Controller
 - Room Controller
 - File input/output
+- Data Manager
+
 ![Alt text](Content/Controller.png?raw=true "Class Diagram")
+
+## Design Patterns
+
+### Singleton
+- Keeps track of the data regarding students and exams.
+- Allows access to students and exams in multiple classes.
+- All changes in data is maintained between classes.
+
+### State
+- Easily switch between different JavaFX scenes.
 
 ## Demo
 
@@ -65,3 +78,13 @@ Model-View-Controller
 ![Alt text](Content/excel_after.png?raw=true "Excel After")
 
 GIFs created with [LiceCap](http://www.cockos.com/licecap/).
+
+## What I Liked Best.
+- The use of the Singleton Pattern allowed me to access the data easily without having to pass them as arguments everytime I called a function that processes the data.
+- I found many external libraries that had functions I wanted so I didn't have to rewrite the functions myself.
+    - i.e Apache POI, ControlFX
+
+## What I Learned.
+- JavaFX
+- The value of using meaningful variable names and design patterns to organize code.
+- There are external libraries for everything.
