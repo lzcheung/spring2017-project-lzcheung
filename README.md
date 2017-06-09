@@ -45,14 +45,13 @@ Model-View-Controller
 ![Alt text](Content/ClassDiagram.png?raw=true "Class Diagram")
 
 ## Demo
+### Excel Sheet Before
+![Alt text](Content/excel_before.png?raw=true "Class Diagram")
 
 ### Adding Rooms and Selecting Excel File
 <img src='http://i.imgur.com/tcXs6eA.gif' title='Scene 1' width='' alt='Scene 1' />
 
 GIFs created with [LiceCap](http://www.cockos.com/licecap/).
-
-### Excel Sheet Before
-![Alt text](Content/excel_before.png?raw=true "Class Diagram")
 
 ### Excel Sheet After
 ![Alt text](Content/excel_after.png?raw=true "Class Diagram")
