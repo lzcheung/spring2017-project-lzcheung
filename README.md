@@ -33,16 +33,16 @@ Model-View-Controller
 - Exam
 - Seat
 - Room
+![Alt text](Content/Model.png?raw=true "Class Diagram")
 
 ### View
 - The GUI.
+![Alt text](Content/UI.png?raw=true "Class Diagram")
 
 ### Controller
 - Room Controller
 - File input/output
-
-## Class Diagram
-![Alt text](Content/ClassDiagram.png?raw=true "Class Diagram")
+![Alt text](Content/Controller.png?raw=true "Class Diagram")
 
 ## Demo
 
