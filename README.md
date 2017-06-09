@@ -58,7 +58,7 @@ Model-View-Controller
 ### Expanding a Table Section
 ![Alt text](Content/ExamDetails.png?raw=true "Exam Details")
 
-### Expanding a Table Section
+### Finish Screen
 ![Alt text](Content/FinishScreen.png?raw=true "Finish")
 
 ### Excel Sheet After
