@@ -18,6 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import main.java.controller.DataSingleton;
+import main.java.controller.FileProcessor;
 import main.java.model.Exam;
 
 import org.controlsfx.control.table.TableFilter;
@@ -27,13 +28,13 @@ public class TableScene extends Scene {
     private TableView<Exam> table;
     private DataSingleton data;
     
-    public TableSceneVBox() {
+    public TableSceneVBox(Stage stage, String outFilePath) {
       table = new TableView<>();
       data = DataSingleton.getInstance();
-      initVBox();
+      initVBox(stage, outFilePath);
     }
     
-    private void initVBox() {
+    private void initVBox(final Stage stage, final String outFilePath) {
       final Label title = new Label("Exams");
       title.setFont(new Font("Arial", 20));
       
@@ -55,16 +56,16 @@ public class TableScene extends Scene {
       usernameCol.setCellValueFactory(new PropertyValueFactory<Exam, String>("studentUsername"));
       
       table.setItems(getExams());
-      table.getColumns().addAll(reqIdCol,
-                                studentNameCol,
-                                usernameCol,
-                                startTimeCol,
-                                seatCol,
-                                endTimeCol);
+      table.getColumns().add(reqIdCol);
+      table.getColumns().add(studentNameCol);
+      table.getColumns().add(usernameCol);
+      table.getColumns().add(startTimeCol);
+      table.getColumns().add(seatCol);
+      table.getColumns().add(endTimeCol);
       
       TableFilter tableFilter = new TableFilter(table);
       
-      Button detailsButton = new Button("Details");
+      Button detailsButton = new Button("Expand Selection");
       detailsButton.setOnAction(
           new EventHandler<ActionEvent>() {
             @Override
@@ -76,10 +77,21 @@ public class TableScene extends Scene {
               details.showAndWait();
             }
         });
+      
+      Button exportButton = new Button("Export");
+      exportButton.setOnAction(
+          new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent e) {
+              DataSingleton data = DataSingleton.getInstance();
+              FileProcessor.writeToExcelFile(outFilePath, data.getExams());
+              stage.setScene(new FinishScene(stage));
+            }
+        });
 
       this.setSpacing(8);
       this.setPadding(new Insets(10, 0, 0, 10));
-      this.getChildren().addAll(title, instruction, table, detailsButton);
+      this.getChildren().addAll(title, instruction, table, detailsButton, exportButton);
     }
     
     private ObservableList<Exam> getExams() {
@@ -93,8 +105,8 @@ public class TableScene extends Scene {
     }
   }
 
-  public TableScene(Stage stage) {
-    super(new TableSceneVBox(), 880, 600);
+  public TableScene(Stage stage, String outFilePath) {
+    super(new TableSceneVBox(stage, outFilePath), 880, 600);
   }
 
 }

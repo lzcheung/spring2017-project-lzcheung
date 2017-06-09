@@ -34,7 +34,7 @@ public class ExamDetailsScene extends Scene {
       final Label seatLabel = new Label("Seat: " + exam.getSeat());
       
       final Label startTimeLabel = 
-          new Label("Start time:" + Exam.TIME_FORMAT.format(exam.getStartTime()));
+          new Label("Start time: " + Exam.TIME_FORMAT.format(exam.getStartTime()));
       final Label endTimeLabel =
           new Label("End time: " + Exam.TIME_FORMAT.format(exam.getEndTime()));
       

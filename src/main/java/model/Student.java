@@ -33,6 +33,14 @@ public class Student {
     this.username = username;
   }
   
+  public HashMap<Integer, Exam> getExams() {
+    return exams;
+  }
+
+  public void setExams(HashMap<Integer, Exam> exams) {
+    this.exams = exams;
+  }
+
   public void addExam(Exam e) {
     exams.put(e.getRequestId(), e);
   }

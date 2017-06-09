@@ -1,7 +1,5 @@
 package test.java;
 
-import static org.junit.Assert.assertEquals;
-
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.impl.PojoClassFactory;
 import com.openpojo.validation.Validator;
@@ -11,12 +9,7 @@ import com.openpojo.validation.rule.impl.SetterMustExistRule;
 import com.openpojo.validation.test.impl.GetterTester;
 import com.openpojo.validation.test.impl.SetterTester;
 
-import java.util.Date;
-
 import main.java.model.Exam;
-import main.java.model.Seat;
-import main.java.model.Student;
-
 import org.junit.Test;
 
 public class TestExam {

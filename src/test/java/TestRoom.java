@@ -12,13 +12,13 @@ public class TestRoom {
 
   @Test
   public void testRoomNumber() {
-    assertEquals("117", rm.getRoomNumber());
+    assertEquals("117", rm.getRoomName());
   }
   
   @Test
   public void testSetRoomNumber() {
-    rm.setRoomNumber("102");
-    assertEquals("102", rm.getRoomNumber());
+    rm.setRoomName("102");
+    assertEquals("102", rm.getRoomName());
   }
   
   @Test

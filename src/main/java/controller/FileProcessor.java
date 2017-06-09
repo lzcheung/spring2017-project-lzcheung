@@ -91,7 +91,7 @@ public class FileProcessor {
     return new Student(name, username);
   }
   
-  public void writeToExcelFile(String outputFileName, List<Exam> exams) {
+  public static void writeToExcelFile(String outputFileName, List<Exam> exams) {
     Workbook wb = new XSSFWorkbook();
     Sheet sheet = wb.createSheet("Sheet 1");
     Row header = sheet.createRow(0);

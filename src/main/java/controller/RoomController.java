@@ -15,8 +15,12 @@ public class RoomController {
     this.extras = new ArrayList<>();
   }
   
-  public void addRoom(String roomNumber, int capacity) {
-    rooms.add(new Room(roomNumber, capacity));
+  public ArrayList<Room> getRooms() {
+    return rooms;
+  }
+
+  public void addRoom(Room room) {
+    rooms.add(room);
   }
   
   public void seatExams(List<Exam> exams) {
