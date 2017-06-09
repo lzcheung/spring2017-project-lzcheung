@@ -73,7 +73,8 @@ public class ImportFileScene extends Scene {
             data.addRoom(room);
             roomObservableList.add(room);
             errorLabel.setText("");
-            roomTable.refresh();
+            roomTable.getColumns().clear();
+            initRoomTable();
           } else {
             errorLabel.setText("Invalid room name or capacity value.");
           }
