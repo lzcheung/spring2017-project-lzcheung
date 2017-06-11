@@ -1,11 +1,12 @@
 package main.java.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Seat {
  
   private String id;
-  private ArrayList<Exam> exams;
+  private List<Exam> exams;
 
   /**
    * @param id Seat number.
@@ -27,11 +28,11 @@ public class Seat {
     return exams.size();
   }
   
-  public ArrayList<Exam> getExams() {
+  public List<Exam> getExams() {
     return exams;
   }
 
-  public void setExams(ArrayList<Exam> exams) {
+  public void setExams(List<Exam> exams) {
     this.exams = exams;
   }
   
