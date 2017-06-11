@@ -100,10 +100,6 @@ public class Room {
     }
   }
   
-  public boolean containsExam(int reqId) {
-    return reqId == 0;
-  }
-  
   public int isValidExam(Exam exam) {
     for (int i = 0; i < seats.length; i++) {
       if (seats[i] == null || seats[i].checkExam(exam)) {
@@ -115,7 +111,7 @@ public class Room {
   
   public void addExamToSeat(Exam exam, int seatNumber) {
     String assigned = roomName + "-" + Integer.toString(seatNumber);
-    exam.setSeat(assigned);
+    exam.setSeatName(assigned);
     if (seats[seatNumber] == null) {
       seats[seatNumber] = new Seat(assigned);
       seats[seatNumber].addExam(exam);

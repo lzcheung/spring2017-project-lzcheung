@@ -23,15 +23,16 @@ public class FileProcessor {
   public static final int COURSE = 4;
   public static final int START_TIME = 5;
   public static final int END_TIME = 6;
-  public static final int ACCOMODATIONS = 7;
+  public static final int ACCOMMODATIONS = 7;
   public static final int INSTRUCTOR_ALLOWS = 8;
   public static final int RECIEVED = 12;
   public static final int STUDENT_USERNAME = 13;
   public static final int INSTRUCTOR_NAME = 15;
   public static final int REQUEST_STATUS = 21;
   
-  public void readFile(String fileName, DataSingleton state) {
+  public void readFile(String fileName) {
     FileInputStream file = null;
+    DataSingleton state = DataSingleton.getInstance();
     try {
       file = new FileInputStream(new File(fileName));
       
@@ -74,7 +75,7 @@ public class FileProcessor {
     String examReceived = row.getCell(RECIEVED).getStringCellValue();
     String professor = row.getCell(INSTRUCTOR_NAME).getStringCellValue();
     String requestStatus = row.getCell(REQUEST_STATUS).getStringCellValue();
-    String accomodations = row.getCell(ACCOMODATIONS).getStringCellValue();
+    String accomodations = row.getCell(ACCOMMODATIONS).getStringCellValue();
     String course = row.getCell(COURSE).getStringCellValue();
     String allows = row.getCell(INSTRUCTOR_ALLOWS).getStringCellValue();
     Date startTime = row.getCell(START_TIME).getDateCellValue();
@@ -118,7 +119,7 @@ public class FileProcessor {
       row.createCell(2).setCellValue(exam.getRequestStatus());
       row.createCell(3).setCellValue(exam.getAccommodations());
       row.createCell(4).setCellValue(exam.getRequestId());
-      row.createCell(5).setCellValue(exam.getSeat());
+      row.createCell(5).setCellValue(exam.getSeatName());
       row.createCell(6).setCellValue(exam.getStudent().getName());
       row.createCell(7).setCellValue(exam.getCourse());
       row.createCell(8).setCellValue(Exam.TIME_FORMAT.format(exam.getStartTime()));
@@ -126,31 +127,19 @@ public class FileProcessor {
       row.createCell(10).setCellValue(exam.getProfessor());
       row.createCell(11).setCellValue(exam.getStudent().getUsername());
     }
-   
-    FileOutputStream fileOut = null;
     
-    try {
-      fileOut = new FileOutputStream(outputFileName);
+    try (FileOutputStream fileOut = new FileOutputStream(outputFileName);) {
       wb.write(fileOut);
+      fileOut.close();
     } catch (Exception e) {
       Logger l = Logger.getAnonymousLogger();
       l.log(null, "Invalid Format", e);
     } finally {
       try {
-        if (wb != null) {
-          wb.close();
-        }
+        wb.close();
       } catch (Exception e) {
         Logger l = Logger.getAnonymousLogger();
         l.log(null, "Exception: Workbook failed to close", e);
-      }
-      try {
-        if (fileOut != null) {
-          fileOut.close();
-        }
-      } catch (Exception e) {
-        Logger l = Logger.getAnonymousLogger();
-        l.log(null, "Exception: Filestream failed to close", e);
       }
     }
   }
@@ -159,7 +148,6 @@ public class FileProcessor {
     int idx = name.lastIndexOf('.');
     String oldName = name.substring(0, idx);
     String ext = name.substring(idx);
-    String outPath = String.format("%s/%s_result%s", parent, oldName, ext);
-    return outPath;
+    return String.format("%s/%s_result%s", parent, oldName, ext);
   }
 }

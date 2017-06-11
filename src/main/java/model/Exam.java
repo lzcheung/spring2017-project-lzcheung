@@ -18,7 +18,7 @@ public class Exam {
   private String requestStatus;
   private String accommodations;
   private String course;
-  private String seat;
+  private String seatName;
   private Date startTime;
   private Date endTime;
   private Student student;
@@ -54,7 +54,7 @@ public class Exam {
     this.student = student;
     this.studentName = student.getName();
     this.studentUsername = student.getUsername();
-    this.seat = "Not seated";
+    this.seatName = "Not seated";
     this.allows = allows;
   }
 
@@ -146,12 +146,12 @@ public class Exam {
     this.examReceived = examReceived;
   }
 
-  public String getSeat() {
-    return seat;
+  public String getSeatName() {
+    return seatName;
   }
 
-  public void setSeat(String seat) {
-    this.seat = seat;
+  public void setSeatName(String seatName) {
+    this.seatName = seatName;
   }
 
   public String getAllows() {
@@ -163,21 +163,16 @@ public class Exam {
   }
 
   public String toString() {
-    String exam = String.format("%-60s%-40s%-30s%-30s%-30s", 
+    return String.format("%-60s%-40s%-30s%-30s%-30s", 
         student.toString(), 
         "Professor: " + professor, 
         "Course: " + course, 
         "Start time: " + TIME_FORMAT.format(startTime), 
         "End time: " + TIME_FORMAT.format(endTime)
         );
-    return exam;
   }
   
   public boolean compare(Exam exam) {
-    if (this.endTime.after(exam.startTime)) {
-      return false;
-    } else {
-      return true;
-    }
+    return !(this.endTime.after(exam.startTime));
   }
 }

@@ -45,7 +45,7 @@ public class TableScene extends Scene {
       TableColumn<Exam, Integer> reqIdCol = new TableColumn<>("REQ #");
       reqIdCol.setCellValueFactory(new PropertyValueFactory<Exam, Integer>("requestId"));
       TableColumn<Exam, String> seatCol = new TableColumn<>("LOCATION/SEAT");
-      seatCol.setCellValueFactory(new PropertyValueFactory<Exam, String>("seat"));
+      seatCol.setCellValueFactory(new PropertyValueFactory<Exam, String>("seatName"));
       TableColumn<Exam, String> studentNameCol = new TableColumn<>("STUDENT");
       studentNameCol.setCellValueFactory(new PropertyValueFactory<Exam, String>("studentName"));
       TableColumn<Exam, Date> startTimeCol = new TableColumn<>("START TIME");
@@ -83,7 +83,6 @@ public class TableScene extends Scene {
           new EventHandler<ActionEvent>() {
             @Override
             public void handle(final ActionEvent e) {
-              DataSingleton data = DataSingleton.getInstance();
               FileProcessor.writeToExcelFile(outFilePath, data.getExams());
               stage.setScene(new FinishScene(stage));
             }

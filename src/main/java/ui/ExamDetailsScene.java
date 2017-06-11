@@ -31,7 +31,7 @@ public class ExamDetailsScene extends Scene {
       final Label studentNameLabel = new Label("Name: " + student.getName());
       final Label studentUsernameLabel = new Label("Username: " + student.getUsername());
       
-      final Label seatLabel = new Label("Seat: " + exam.getSeat());
+      final Label seatLabel = new Label("Seat: " + exam.getSeatName());
       
       final Label startTimeLabel = 
           new Label("Start time: " + Exam.TIME_FORMAT.format(exam.getStartTime()));

@@ -73,8 +73,7 @@ public class ImportFileScene extends Scene {
             data.addRoom(room);
             roomObservableList.add(room);
             errorLabel.setText("");
-            roomTable.getColumns().clear();
-            initRoomTable();
+            refreshTable();
           } else {
             errorLabel.setText("Invalid room name or capacity value.");
           }
@@ -122,7 +121,7 @@ public class ImportFileScene extends Scene {
                 String path = file.getAbsolutePath();
                 FileProcessor fp = new FileProcessor();
 
-                fp.readFile(path, data);
+                fp.readFile(path);
 
                 data.getRoomManager().seatExams(data.getExams());
                 
@@ -174,6 +173,11 @@ public class ImportFileScene extends Scene {
       roomTable.setItems(roomObservableList);
       roomTable.getColumns().add(roomNameCol);
       roomTable.getColumns().add(capacityCol);
+    }
+    
+    private void refreshTable() {
+      roomTable.getColumns().clear();
+      initRoomTable();
     }
   }
   

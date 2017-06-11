@@ -31,12 +31,12 @@ public class DataSingleton {
     this.roomManager = roomManager;
   }
 
-  public void setStudents(ArrayList<Student> students) {
-    this.students = students;
+  public void setStudents(List<Student> students) {
+    this.students = (ArrayList<Student>)students;
   }
 
-  public void setExams(ArrayList<Exam> exams) {
-    this.exams = exams;
+  public void setExams(List<Exam> exams) {
+    this.exams = (ArrayList<Exam>)exams;
   }
   
   public void addRoom(Room room) {
