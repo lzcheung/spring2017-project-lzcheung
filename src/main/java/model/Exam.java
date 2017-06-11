@@ -40,22 +40,20 @@ public class Exam {
    * @param startTime Exam start time.
    * @param endTime Exam end time.
    */
-  public Exam(int requestId, String examRecieved, String professor, 
-              String requestStatus, String accomodations, String course, 
-              Date startTime, Date endTime, Student student, String allows) {
+  public Exam(int requestId, String[] strings, Date startTime, Date endTime, Student student) {
     this.requestId = requestId;
-    this.examReceived = examRecieved;
-    this.professor = professor;
-    this.requestStatus = requestStatus;
-    this.accommodations = accomodations;
-    this.course = course;
+    this.examReceived = strings[0];
+    this.professor = strings[1];
+    this.requestStatus = strings[2];
+    this.accommodations = strings[3];
+    this.course = strings[4];
     this.startTime = startTime;
     this.endTime = endTime;
     this.student = student;
     this.studentName = student.getName();
     this.studentUsername = student.getUsername();
     this.seatName = "Not seated";
-    this.allows = allows;
+    this.allows = strings[4];
   }
 
   public int getRequestId() {

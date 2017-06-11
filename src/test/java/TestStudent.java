@@ -51,16 +51,14 @@ public class TestStudent {
     } catch (ParseException e) {
       e.printStackTrace();
     }
-    return new Exam(id,
-                    "received",
-                    "professor",
-                    "status",
-                    "accommodations",
-                    "course",
-                    startTime,
-                    endTime,
-                    student,
-                    "allows");
+    String[] examStrings = {"examReceived", 
+                            "professor", 
+                            "requestStatus", 
+                            "accommodations", 
+                            "course", 
+                            "allows"};
+    
+    return new Exam(id, examStrings, startTime, endTime, student);
     
   }
 

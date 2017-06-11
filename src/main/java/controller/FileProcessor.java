@@ -31,13 +31,12 @@ public class FileProcessor {
   public static final int REQUEST_STATUS = 21;
   
   public void readFile(String fileName) {
-    FileInputStream file = null;
     DataSingleton state = DataSingleton.getInstance();
-    try {
-      file = new FileInputStream(new File(fileName));
+    XSSFWorkbook workbook = null;
+    try (FileInputStream file = new FileInputStream(new File(fileName));) {
       
       //Create Workbook instance holding reference to .xlsx file
-      XSSFWorkbook workbook = new XSSFWorkbook(file);
+      workbook = new XSSFWorkbook(file);
       
       //Get first sheet from workbook
       XSSFSheet sheet = workbook.getSheetAt(0);
@@ -53,15 +52,14 @@ public class FileProcessor {
         }
       }
       
-      workbook.close();
-      
+      file.close();
     } catch (Exception e) {
       Logger l = Logger.getAnonymousLogger();
       l.log(null, "Invalid Format", e);
     } finally {
       try {
-        if (file != null) {
-          file.close();
+        if (workbook != null) {
+          workbook.close();
         }
       } catch (Exception e) {
         Logger l = Logger.getAnonymousLogger();
@@ -75,14 +73,14 @@ public class FileProcessor {
     String examReceived = row.getCell(RECIEVED).getStringCellValue();
     String professor = row.getCell(INSTRUCTOR_NAME).getStringCellValue();
     String requestStatus = row.getCell(REQUEST_STATUS).getStringCellValue();
-    String accomodations = row.getCell(ACCOMMODATIONS).getStringCellValue();
+    String accommodations = row.getCell(ACCOMMODATIONS).getStringCellValue();
     String course = row.getCell(COURSE).getStringCellValue();
     String allows = row.getCell(INSTRUCTOR_ALLOWS).getStringCellValue();
     Date startTime = row.getCell(START_TIME).getDateCellValue();
     Date endTime = row.getCell(END_TIME).getDateCellValue();
+    String[] examStrings = {examReceived, professor, requestStatus, accommodations, course, allows};
     
-    return new Exam(requestId, examReceived, professor, requestStatus, 
-        accomodations, course, startTime, endTime, student, allows);
+    return new Exam(requestId, examStrings, startTime, endTime, student);
   }
 
   private Student rowToStudent(XSSFRow row) {

@@ -7,16 +7,28 @@ import main.java.model.Exam;
 import main.java.model.Room;
 
 public class RoomController {
-  private ArrayList<Room> rooms;
-  private ArrayList<Exam> extras;
+  private List<Room> rooms;
+  private List<Exam> extras;
   
   public RoomController() {
     this.rooms = new ArrayList<>();
     this.extras = new ArrayList<>();
   }
-  
-  public ArrayList<Room> getRooms() {
+
+  public List<Room> getRooms() {
     return rooms;
+  }
+
+  public void setRooms(List<Room> rooms) {
+    this.rooms = rooms;
+  }
+
+  public List<Exam> getExtras() {
+    return extras;
+  }
+
+  public void setExtras(List<Exam> extras) {
+    this.extras = extras;
   }
 
   public void addRoom(Room room) {

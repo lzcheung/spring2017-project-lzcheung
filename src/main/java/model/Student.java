@@ -1,11 +1,12 @@
 package main.java.model;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Student {
   private String name;
   private String username;
-  private HashMap<Integer, Exam> exams;
+  private Map<Integer, Exam> exams;
   
   /**
    * @param name Student name.
@@ -33,11 +34,11 @@ public class Student {
     this.username = username;
   }
   
-  public HashMap<Integer, Exam> getExams() {
+  public Map<Integer, Exam> getExams() {
     return exams;
   }
 
-  public void setExams(HashMap<Integer, Exam> exams) {
+  public void setExams(Map<Integer, Exam> exams) {
     this.exams = exams;
   }
 
