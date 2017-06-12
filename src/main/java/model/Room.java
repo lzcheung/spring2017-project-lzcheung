@@ -76,28 +76,12 @@ public class Room {
     this.startBound = startBound;
   }
   
-  public void setStartBound(String startTime) {
-    try {
-      this.startBound = Exam.TIME_FORMAT.parse(startTime);
-    } catch (ParseException e) {
-      parseError(e);
-    }
-  }
-  
   public Date getEndBound() {
     return endBound;
   }
   
   public void setEndBound(Date endBound) {
     this.endBound = endBound;
-  }
-  
-  public void setEndBound(String endTime) {
-    try {
-      this.endBound = Exam.TIME_FORMAT.parse(endTime);
-    } catch (ParseException e) {
-      parseError(e);
-    }
   }
   
   public int isValidExam(Exam exam) {

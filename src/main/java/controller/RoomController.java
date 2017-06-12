@@ -14,6 +14,12 @@ public class RoomController {
     this.rooms = new ArrayList<>();
     this.extras = new ArrayList<>();
   }
+  
+  public RoomController(List<Room> rooms, List<Exam> extras) {
+    super();
+    this.rooms = rooms;
+    this.extras = extras;
+  }
 
   public List<Room> getRooms() {
     return rooms;
