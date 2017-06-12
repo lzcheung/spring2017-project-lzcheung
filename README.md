@@ -17,10 +17,7 @@ Then build the project with:
 $ mvn clean install
 ```
 
-And finally run the project with:
-```bash
-TODO
-```
+And finally run main.java.
 
 ## Application Usage
   1. Input the room information and click the import button to choose the excel file you wish process.
